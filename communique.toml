@@ -1,0 +1,12 @@
+context = """
+ai-company is an open-source AI operating system for building, launching, and operating a solo SaaS company with high scrutiny, high quality, auditability, and approval-by-policy.
+
+The repository is in the seed phase. Release notes should call out doctrine, decision-system, stack-backlog, tooling, and public-safety changes clearly.
+"""
+
+system_extra = """
+Write in a direct, practical tone. Avoid marketing language. Separate product doctrine changes from tooling changes. Call out any security, trust, or public-repository implications.
+"""
+
+[defaults]
+max_tokens = 4096

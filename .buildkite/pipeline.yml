@@ -1,0 +1,8 @@
+env:
+  MISE_IGNORED_CONFIG_PATHS: "~/.config/mise/config.toml"
+
+steps:
+  - label: ":seedling: seed repo checks"
+    command:
+      - "mise install"
+      - "mise run ci"

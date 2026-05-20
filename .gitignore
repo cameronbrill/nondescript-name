@@ -1,0 +1,39 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env*
+
+# Local tool overrides
+mise.local.toml
+mise.*.local.toml
+mise.local.lock
+mise.*.local.lock
+fnox.local.toml
+fnox.*.local.toml
+hk.local.pkl
+
+# Dependencies and generated outputs
+node_modules/
+vendor/
+dist/
+build/
+coverage/
+.turbo/
+.next/
+.cache/
+.buildkite/*.local.yml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor files
+.idea/
+.vscode/
+*.swp
+*.swo

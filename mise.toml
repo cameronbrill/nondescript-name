@@ -1,0 +1,39 @@
+[settings]
+lockfile = true
+minimum_release_age = "3d"
+task.run_auto_install = false
+
+[tools]
+rust = "1.88.0"
+fnox = "1.25.1"
+infisical = "0.43.85"
+dprint = "0.54.0"
+cargo-binstall = "1.19.1"
+"github:aviator-co/av" = "0.1.35"
+"cargo:hk" = "1.45.0"
+"cargo:pitchfork-cli" = "2.11.0"
+"cargo:communique" = "1.1.3"
+
+[tasks.fmt]
+description = "Format repository files"
+run = "dprint fmt"
+
+[tasks.fmt-check]
+description = "Check repository formatting"
+run = "dprint check"
+
+[tasks.check]
+description = "Run project checks"
+run = "hk check --all"
+
+[tasks.secret-scan]
+description = "Scan repository files for committed secrets"
+run = "infisical scan --no-git --redact --no-color"
+
+[tasks.ci]
+description = "Run CI checks"
+run = "hk check --all"
+
+[tasks.release-notes]
+description = "Preview release notes for a tag"
+run = "communique generate {{arg(name='tag')}} --dry-run"

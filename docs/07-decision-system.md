@@ -22,7 +22,7 @@ Superseded: the decision was replaced by a later decision.
 
 Doctrine decision: changes product principles, MVP definition, dogfood rules, open-source posture, or quality philosophy.
 
-Stack decision: chooses tools, languages, services, frameworks, task runners, hosting, testing, formatting, linting, observability, auth, database, search, model providers, or environment management.
+Stack decision: chooses tools, languages, services, vendor adapters, frameworks, task runners, hosting, testing, formatting, linting, observability, auth, database, search, model providers, or environment management.
 
 Architecture decision: changes component boundaries, data flow, trust boundaries, execution model, integration model, or persistence model.
 
@@ -69,10 +69,12 @@ Do not scaffold application code until enough stack decisions are marked `blesse
 
 `docs/adr/001-seed-tooling-baseline.md` blesses a small amount of seed-phase tooling before the full app stack is decided.
 
-Blessed:
+These seed tooling choices govern repository operations only. They do not create hard product dependencies or bypass typed capability and provider-adapter boundaries.
+
+Blessed for repository operations:
 
 - Buildkite for CI.
-- Plane for issue and project tracking.
+- Plane for this repository's issue and project tracking.
 - mise for task running, tool version pinning, and committed tool lockfiles.
 - Renovate for automated dependency maintenance.
 - fnox for secrets management.

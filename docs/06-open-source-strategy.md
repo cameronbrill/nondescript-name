@@ -56,6 +56,10 @@ Commercial connectors are integrations with production services such as source c
 
 Connector code should be open source. Real credentials, customer configuration, and private operational data must remain outside the repo.
 
+Connectors should be swappable provider adapters behind typed capabilities. Blessed-path vendors are recommended defaults for setup and dogfooding, not exclusive product dependencies.
+
+Examples: issue tracking may recommend Plane while supporting Linear, Jira, GitHub Issues, or existing user accounts. Code forge integrations may recommend Codeberg or Forgejo while supporting GitHub and GitLab.
+
 ## Public Evidence
 
 Because the project is dogfood-driven, public evidence matters.

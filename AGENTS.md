@@ -35,8 +35,8 @@ The product must not achieve autonomy by hiding risk. It must achieve autonomy t
 8. Public code must still be safe: safety comes from permissions, policies, tests, reviews, and credential hygiene, not secrecy.
 9. Major technical decisions require an ADR or a documented decision entry.
 10. Do not invent stack choices casually. If a stack choice is unresolved, mark it `TBD` and preserve the decision for a dedicated deep dive.
-11. Use Buildkite for CI, not GitHub Actions.
-12. Use Plane for issue and project tracking, not GitHub Issues.
+11. Use Buildkite for repository CI, not GitHub Actions.
+12. Use Plane for this repository's issue and project tracking, not GitHub Issues.
 13. Use mise for task running, tool version pinning, and committed tool lockfiles.
 14. Use Renovate for automated dependency maintenance.
 15. Use fnox for secrets management and Infisical as the fnox remote provider when encrypted in-repo secrets are insufficient. Do not add `.env` or `.env.example` files.
@@ -61,6 +61,7 @@ ai-company is also a dogfood company, but it requires tighter founder oversight 
 - Read `README.md`, this file, and all docs before making structural changes.
 - Do not scaffold application code during the seed phase unless explicitly instructed.
 - Do not choose a blessed stack unless the task is specifically to make or record that decision.
+- Do not turn repository tooling choices into product integration requirements. Product integrations must use typed capabilities and provider adapters unless a later ADR explicitly narrows that surface.
 - Prefer small, reviewable documentation changes over broad rewrites.
 - When changing doctrine, update related docs so the repo remains internally consistent.
 - When a decision is made, record it in the decision system and create an ADR if it affects architecture.

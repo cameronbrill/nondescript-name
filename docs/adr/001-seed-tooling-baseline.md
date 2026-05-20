@@ -16,10 +16,10 @@ The project should not accidentally adopt GitHub Actions, GitHub Issues, dotenv 
 
 ## Decision
 
-Bless these seed-phase tools:
+Bless these seed-phase repository tools for project operations, not as product integration dependencies:
 
 - Buildkite for CI.
-- Plane for issue and project tracking.
+- Plane for this repository's issue and project tracking.
 - mise for task running, tool version pinning, and committed tool lockfiles.
 - Renovate for automated dependency maintenance.
 - fnox for secrets management.
@@ -61,9 +61,9 @@ Enable `mise.lock` and set mise's minimum release age to three days. Commit `mis
 
 ## Rationale
 
-These decisions establish the workflow substrate without prematurely choosing the application stack.
+These decisions establish the repository workflow substrate without prematurely choosing the application stack or hardwiring product integrations to seed tooling vendors.
 
-Buildkite keeps CI out of GitHub Actions. Plane keeps work tracking out of GitHub Issues. mise makes tool and task entrypoints explicit. `mise.lock` makes seed tooling reproducible. Renovate gives dependency updates an explicit owner. fnox avoids dotenv-based secret drift. Infisical gives fnox a remote-provider path when encrypted in-repo secrets are not enough and provides secret scanning. pitchfork gives the project a blessed path for local daemon management once services exist. hk gives the project a single hook/check entrypoint. dprint gives the project formatting orchestration without choosing language-specific formatters too early. cargo-binstall accelerates cargo-installed seed CLI setup without blessing Rust for application code. Aviator gives the project stacked PRs, merge queue, and release management. communique gives the project a release-note path that can use repository context without hand-written release churn.
+Buildkite keeps CI out of GitHub Actions. Plane keeps repository work tracking out of GitHub Issues. mise makes tool and task entrypoints explicit. `mise.lock` makes seed tooling reproducible. Renovate gives dependency updates an explicit owner. fnox avoids dotenv-based secret drift. Infisical gives fnox a remote-provider path when encrypted in-repo secrets are not enough and provides secret scanning. pitchfork gives the project a blessed path for local daemon management once services exist. hk gives the project a single hook/check entrypoint. dprint gives the project formatting orchestration without choosing language-specific formatters too early. cargo-binstall accelerates cargo-installed seed CLI setup without blessing Rust for application code. Aviator gives the project stacked PRs, merge queue, and release management. communique gives the project a release-note path that can use repository context without hand-written release churn.
 
 ## Options Considered
 
@@ -87,9 +87,10 @@ Ad hoc merge and release workflows: rejected for now because Aviator should hand
 
 Positive consequences:
 
-- CI, tasks, hooks, secrets, secret scanning, dependency maintenance, daemon management, issue tracking, formatting, stacked PRs, merge queue, release management, and release notes have explicit seed-phase owners.
+- Repository CI, tasks, hooks, secrets, secret scanning, dependency maintenance, daemon management, issue tracking, formatting, stacked PRs, merge queue, release management, and release notes have explicit seed-phase owners.
 - Future agents should not add GitHub Actions, GitHub Issues templates, or dotenv examples by default.
 - The repository can keep app-stack decisions TBD while still having project hygiene.
+- Product features must depend on typed capabilities and provider adapters, not directly on these repository tooling choices.
 
 Negative consequences:
 

@@ -34,6 +34,7 @@ Give a solo founder production-grade company leverage without quality churn.
 6. Auditability is a core feature, not a compliance afterthought.
 7. Quality systems are part of the moat.
 8. The project should be public by default and safe because of its architecture, not because critical behavior is hidden.
+9. Recommended defaults should not become vendor lock-in.
 
 ## What We Are Not Building
 
@@ -59,6 +60,7 @@ ai-company is not:
 8. Public-by-default implementation.
 9. Dogfood before claims.
 10. Maintenance beats one-off generation.
+11. Recommended defaults with swappable integrations.
 
 ## Core Vocabulary
 
@@ -72,7 +74,7 @@ Work packet: a governed unit of work that includes intent, scope, proposed actio
 
 Agent action: a proposed, staged, or executed action by an agent.
 
-Capability: a typed ability exposed to an agent, usually through an integration or internal system.
+Capability: a typed ability exposed to an agent, usually through an integration or internal system. External capabilities should be implemented through provider adapters rather than hard-coded vendor paths.
 
 Policy: a standing rule that determines what agents may do, what they must escalate, and what they must log.
 

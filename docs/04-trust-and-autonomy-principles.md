@@ -25,6 +25,14 @@ Examples:
 
 The exact policy language and engine are future technical decisions.
 
+## Vendor Integration Abstraction
+
+Agents should act through abstract capabilities, not raw vendor SDKs.
+
+A capability should describe the action the system is allowed to take, such as creating an issue, opening a pull request, reading an alert, or posting an internal summary. Provider adapters should bind that capability to a concrete service such as Plane, Linear, Jira, GitHub Issues, Codeberg, Forgejo, GitHub, GitLab, Slack, or another provider.
+
+Recommended defaults are allowed, but they should not erase user choice. Policy, permissions, audit records, and quality gates should attach to the capability and adapter boundary.
+
 ## Action Risk Levels
 
 All meaningful agent actions should be assessed by risk.

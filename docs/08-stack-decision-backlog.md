@@ -92,7 +92,7 @@ Questions to resolve: package manager, workspace manager, lockfile policy, depen
 
 ### Issue And Project Tracking
 
-Status: Blessed
+Status: Blessed for this repository; product integration abstraction blessed separately
 
 Decision owner: founder
 
@@ -100,9 +100,11 @@ Decision depth: normal
 
 Decision required before: seed collaboration
 
-Decision: Use Plane for issue and project tracking. Do not use GitHub Issues.
+Decision: Use Plane for this repository's issue and project tracking. Do not use GitHub Issues for this repository.
 
 Repository setting: GitHub Issues are disabled.
+
+Product note: ai-company should recommend Plane for issue tracking, but product integrations must allow other providers such as Linear, Jira, GitHub Issues, or existing user accounts through provider adapters.
 
 ### Stacked PR Workflow
 
@@ -552,7 +554,23 @@ Decision depth: deep dive required
 
 Decision required before: production writes
 
-Questions to resolve: typed capability contracts, capability registry, permission binding, risk metadata, test strategy.
+Questions to resolve: typed capability contracts, capability registry, permission binding, risk metadata, provider adapter boundaries, test strategy.
+
+### External Vendor Integration Abstraction
+
+Status: Blessed
+
+Decision owner: founder
+
+Decision depth: deep dive required
+
+Decision required before: connector implementation
+
+Decision: Product integrations must use typed capabilities and provider adapters. Blessed-path vendors are recommended defaults, not hard dependencies, unless a later ADR explicitly narrows a product surface.
+
+Examples: recommend Plane for issue tracking while supporting Linear, Jira, GitHub Issues, and existing user accounts. Recommend Codeberg or Forgejo for code forge/source control where appropriate while supporting GitHub and GitLab.
+
+Related ADR: `docs/adr/002-vendor-integration-abstraction.md`.
 
 ### Policy Engine
 
@@ -618,7 +636,7 @@ Questions to resolve: eval harness, test datasets, private vs public evals, regr
 
 ### Source Control Connector
 
-Status: TBD
+Status: TBD; vendor abstraction blessed
 
 Decision owner: founder
 
@@ -626,7 +644,19 @@ Decision depth: deep dive required
 
 Decision required before: code-change workflows
 
-Questions to resolve: providers, app installation, repo permissions, branch strategy, pull request automation, merge policy.
+Questions to resolve: provider capability contract, Codeberg/Forgejo recommendation, GitHub and GitLab support, app installation, repo permissions, branch strategy, pull request automation, merge policy.
+
+### Issue Tracker Connector
+
+Status: TBD; vendor abstraction blessed
+
+Decision owner: founder
+
+Decision depth: normal
+
+Decision required before: work tracking product integration
+
+Questions to resolve: issue-tracking capability contract, Plane recommendation, Linear/Jira/GitHub Issues support, existing account onboarding, project mapping, labels/status mapping, comments, attachments, audit linkage.
 
 ### Hosting And Deployment Connector
 

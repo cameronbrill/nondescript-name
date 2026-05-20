@@ -71,6 +71,7 @@ See `docs/08-stack-decision-backlog.md`.
 - `docs/10-code-review-methodology.md` records the code review methodology placeholder.
 - `docs/adr/000-template.md` is the template for architecture decision records.
 - `docs/adr/001-seed-tooling-baseline.md` blesses seed-phase project tooling.
+- `docs/adr/002-vendor-integration-abstraction.md` requires product integrations to use swappable provider adapters.
 - `.aviator/config.yml` defines the Aviator MergeQueue trigger label.
 - `dprint.json` defines formatting orchestration for docs/config files while deferring language-specific formatters.
 - `mise.toml` pins seed tooling, enables `mise.lock`, sets a three-day minimum release age, disables task auto-install, and defines task entrypoints.
@@ -95,3 +96,5 @@ This repo intentionally does not include `.env` or `.env.example` files. Secrets
 GitHub Actions and GitHub Issues are rejected for now. CI runs through Buildkite, project work is tracked in Plane, and GitHub Issues are disabled in the repository settings.
 
 Aviator is used for stacked PRs, merge queue, and release management. Renovate is used for automated dependency maintenance. Infisical is used for secret scanning. dprint is used for formatting orchestration; language-specific formatters are added only when corresponding language decisions are blessed.
+
+Repository tooling choices are not intended to force product users into the same vendors. Product integrations should recommend strong defaults while allowing existing accounts and alternative providers through typed capabilities and provider adapters.

@@ -82,6 +82,8 @@ See `docs/08-stack-decision-backlog.md`.
 - `hk.pkl` defines project checks and git-hook orchestration.
 - `renovate.json` configures automated dependency maintenance.
 - `.buildkite/pipeline.yml` defines the CI entrypoint.
+- `.pi/settings.json` pins project-local Pi developer-agent packages.
+- `.mcp.json` configures the project-local Plane MCP server for developer workflow use.
 - `communique.toml` defines release-note context and style.
 
 ## Development Rule

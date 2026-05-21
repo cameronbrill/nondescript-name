@@ -24,6 +24,10 @@ coverage/
 .next/
 .cache/
 .buildkite/*.local.yml
+.pi/npm/
+.pi/git/
+.pi/sessions/
+.pi/runs/
 
 # Logs
 *.log

@@ -1,0 +1,7 @@
+{
+  "enableSkillCommands": true,
+  "packages": [
+    "npm:pi-subagents@0.24.4",
+    "npm:pi-mcp-adapter@2.6.1"
+  ]
+}

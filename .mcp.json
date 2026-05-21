@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "toolPrefix": "server",
+    "idleTimeout": 10,
+    "directTools": false
+  },
+  "mcpServers": {
+    "plane": {
+      "url": "https://mcp.plane.so/http/mcp",
+      "auth": "oauth",
+      "lifecycle": "lazy",
+      "directTools": false
+    }
+  }
+}

@@ -47,11 +47,13 @@ The MVP is not just a planning tool. It must eventually prove governed execution
 
 ## What Is Intentionally Undecided
 
-The technical stack is not blessed yet.
+The technical stack is only partially blessed.
 
 Some seed-phase tooling is blessed in `docs/adr/001-seed-tooling-baseline.md`: Buildkite, Plane, Aviator, mise, fnox, Infisical, Renovate, pitchfork, hk, dprint, cargo-binstall, and communique.
 
-Before application code is written, the project must deliberately decide the remaining stack across repo organization, languages, environment management, app framework, database, auth, workflow orchestration, observability, hosting, search, testing, formatting, linting, typechecking, model providers, integrations, and release process.
+The web app and control-plane UI stack is blessed in `docs/adr/003-react-router-typescript-web-ui.md`: React Router and TypeScript for the web UI, and Go for company CLIs.
+
+Before application code is written, the project must deliberately decide the remaining stack across repo organization, package management, runtime versions, backend framework, API style, database, auth, workflow orchestration, observability, hosting, search, testing, formatting, linting, schema validation, model providers, integrations, and release process.
 
 See `docs/08-stack-decision-backlog.md`.
 
@@ -72,6 +74,7 @@ See `docs/08-stack-decision-backlog.md`.
 - `docs/adr/000-template.md` is the template for architecture decision records.
 - `docs/adr/001-seed-tooling-baseline.md` blesses seed-phase project tooling.
 - `docs/adr/002-vendor-integration-abstraction.md` requires product integrations to use swappable provider adapters.
+- `docs/adr/003-react-router-typescript-web-ui.md` blesses React Router and TypeScript for the web app/control-plane UI and Go for company CLIs.
 - `.aviator/config.yml` defines the Aviator MergeQueue trigger label.
 - `dprint.json` defines formatting orchestration for docs/config files while deferring language-specific formatters.
 - `mise.toml` pins seed tooling, enables `mise.lock`, sets a three-day minimum release age, disables task auto-install, and defines task entrypoints.

@@ -54,6 +54,8 @@ Deliverables:
 
 Already-blessed seed tooling should be treated as existing constraints unless explicitly revisited through the decision system.
 
+React Router, TypeScript for the web app/control-plane UI, and Go for company CLIs are blessed by `docs/adr/003-react-router-typescript-web-ui.md`. The remaining required-before-scaffold decisions still need review.
+
 Application code is still out of scope unless the founder explicitly chooses to scaffold.
 
 ## Phase 2: Architecture Deep Dive

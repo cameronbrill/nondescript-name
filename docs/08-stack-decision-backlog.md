@@ -64,6 +64,22 @@ The following are rejected for now:
 - committed `.env` files.
 - committed `.env.example` files.
 
+## Blessed Application Stack Decisions
+
+The following application-stack decisions are blessed by `docs/adr/003-react-router-typescript-web-ui.md`:
+
+- Web app and control-plane UI framework: React Router.
+- Web app and control-plane UI language: TypeScript.
+- Company CLI language: Go.
+
+The following are rejected for now:
+
+- Datastar for the web UI framework.
+
+The following are deferred:
+
+- Rust as an application language.
+
 ## Repository And Project Organization
 
 ### Repository Shape
@@ -170,7 +186,7 @@ Questions still to resolve: app versioning, package versioning, changelog format
 
 ### Primary Application Language
 
-Status: TBD
+Status: Blessed for web app/control-plane UI; broader application language TBD
 
 Decision owner: founder
 
@@ -178,13 +194,15 @@ Decision depth: deep dive required
 
 Decision required before: app scaffold
 
-Questions to resolve: primary language for web app, domain logic, integrations, workflows, and tests.
+Decision: Use TypeScript for the web app and control-plane UI.
+
+Questions still to resolve: primary language for backend services, domain logic, integrations, workflows, evals, infrastructure, and non-UI tests.
 
 Note: `rust@1.88.0` and `cargo-binstall@1.19.1` are pinned in `mise.toml` only to support and accelerate cargo-installed seed CLIs. They do not decide the application language.
 
 ### Secondary Language Policy
 
-Status: TBD
+Status: TBD; TypeScript blessed for web app/control-plane UI and Go blessed for company CLIs
 
 Decision owner: founder
 
@@ -192,11 +210,29 @@ Decision depth: deep dive required
 
 Decision required before: specialized tooling
 
-Questions to resolve: whether to allow separate languages for evals, data tooling, model experimentation, CLIs, or infrastructure.
+Decision: Use Go for company CLIs.
+
+Questions to resolve: whether to allow separate languages for evals, data tooling, model experimentation, infrastructure, backend services, or workflow workers.
+
+### Deferred Application Languages
+
+Status: Rust deferred for application code; Datastar rejected for now
+
+Decision owner: founder
+
+Decision depth: normal
+
+Decision required before: app scaffold
+
+Decision: Do not use Rust as an application language during the first app scaffold. Do not use Datastar as the web UI framework during the first app scaffold.
+
+Rationale: Existing Rust pins support seed tooling only. Datastar was rejected for now because of Pro licensing concerns, Content Security Policy fit, and maturity risk.
+
+Allowed later: Rust may be reconsidered for narrow high-assurance runtimes through a later ADR. Datastar may be reconsidered if its licensing, Content Security Policy, and maturity concerns materially change.
 
 ### Runtime Versions
 
-Status: Blessed for version pinning mechanism; runtime versions TBD
+Status: Blessed for version pinning mechanism; Node.js and application runtime versions TBD
 
 Decision owner: founder
 
@@ -208,11 +244,11 @@ Decision: Use mise for tool version pinning and committed `mise.lock` files.
 
 Current repository policy: resolve mise tools only after a three-day minimum release age unless an explicit pin is intentionally changed.
 
-Questions still to resolve: runtime versions, upgrade cadence, local/CI/prod parity.
+Questions still to resolve: Node.js version for the React Router app, Go version for company CLIs, package manager runtime expectations, upgrade cadence, local/CI/prod parity.
 
 ### Module And Build Format
 
-Status: TBD
+Status: Proposed for web app as TypeScript ESM; broader module/build format TBD
 
 Decision owner: founder
 
@@ -220,13 +256,15 @@ Decision depth: normal
 
 Decision required before: shared packages
 
-Questions to resolve: module format, package exports, server/client boundaries, generated type artifacts.
+Decision candidate: Use TypeScript with modern ESM for the React Router web app unless the scaffold decision records a narrower build constraint.
+
+Questions to resolve: package exports, server/client boundaries, generated type artifacts, shared package format, backend module format, and build output policy.
 
 ## Web Application
 
 ### Frontend Framework
 
-Status: TBD
+Status: Blessed for web app/control-plane UI
 
 Decision owner: founder
 
@@ -234,7 +272,9 @@ Decision depth: deep dive required
 
 Decision required before: app scaffold
 
-Questions to resolve: app framework, routing model, rendering model, server/client split, deployment compatibility.
+Decision: Use React Router with TypeScript for the web app and control-plane UI.
+
+Questions still to resolve: exact React Router mode, rendering model, server/client split, deployment compatibility, route conventions, data loading boundaries, and scaffold layout.
 
 ### UI Component Strategy
 
@@ -246,7 +286,7 @@ Decision depth: normal
 
 Decision required before: product UI implementation
 
-Questions to resolve: component library, headless components, custom design system, accessibility baseline.
+Questions to resolve: component library, headless components, custom design system, accessibility baseline, React compatibility, server/client component constraints if any.
 
 ### Styling And Design System
 
@@ -262,7 +302,7 @@ Questions to resolve: styling framework, tokens, themes, typography, dark mode, 
 
 ### Client State And Data Fetching
 
-Status: TBD
+Status: TBD; React Router data APIs allowed for route-level data
 
 Decision owner: founder
 
@@ -270,7 +310,7 @@ Decision depth: normal
 
 Decision required before: interactive app features
 
-Questions to resolve: local state, server state, caching, optimistic updates, mutations, realtime subscriptions.
+Questions to resolve: local state, server state, caching, optimistic updates, mutations, realtime subscriptions, whether React Router loaders/actions are sufficient, and whether a server-state library is needed.
 
 ### Forms And Validation
 
@@ -282,7 +322,7 @@ Decision depth: normal
 
 Decision required before: data-entry flows
 
-Questions to resolve: form library, validation schema strategy, shared server/client validation.
+Questions to resolve: form library, validation schema strategy, React Router action integration, progressive enhancement expectations, shared server/client validation.
 
 ### Realtime Interface
 
@@ -294,7 +334,7 @@ Decision depth: normal
 
 Decision required before: live agent run UI
 
-Questions to resolve: server-sent events, WebSockets, polling, hosted realtime, event persistence.
+Questions to resolve: server-sent events, WebSockets, polling, hosted realtime, event persistence, React Router integration, reconnect behavior.
 
 ## Backend And API
 
@@ -890,7 +930,7 @@ Questions to resolve: analytics provider, privacy posture, self-hosting, event t
 
 ### Typechecking
 
-Status: TBD
+Status: Blessed for TypeScript in web app/control-plane UI; broader typechecking policy TBD
 
 Decision owner: founder
 
@@ -898,11 +938,13 @@ Decision depth: normal
 
 Decision required before: app scaffold
 
-Questions to resolve: typechecker, strictness, generated types, CI enforcement.
+Decision: Use TypeScript typechecking for the React Router web app and control-plane UI.
+
+Questions still to resolve: strictness profile, generated types, shared package type boundaries, CI enforcement, backend typechecking if backend language differs.
 
 ### Linting
 
-Status: Blessed for hook/check orchestration; language-specific linters TBD
+Status: Blessed for hook/check orchestration; TypeScript/React linting TBD
 
 Decision owner: founder
 
@@ -912,11 +954,11 @@ Decision required before: app scaffold
 
 Decision: Use hk for git hooks and project check orchestration.
 
-Questions still to resolve: language-specific linters, rules, import boundaries, security rules, CI enforcement.
+Questions still to resolve: TypeScript linter, React lint rules, accessibility rules, import boundaries, security rules, CI enforcement.
 
 ### Formatting
 
-Status: Blessed for orchestration; language-specific formatters TBD
+Status: Blessed for orchestration; TypeScript/React formatter TBD
 
 Decision owner: founder
 
@@ -928,13 +970,13 @@ Decision: Use dprint for formatting orchestration.
 
 Current repository config: `dprint.json` includes docs/config formatters and intentionally defers language-specific formatters.
 
-Questions still to resolve: markdown formatting, JSON/YAML formatting, language-specific formatters, formatter plugins, CI enforcement.
+Questions still to resolve: TypeScript formatter, JSX/TSX formatting, markdown formatting, JSON/YAML formatting, formatter plugins, CI enforcement.
 
 Allowed later: add individual formatters such as ruff, ssort, and oxfmt only when their corresponding language decisions are blessed.
 
 ### Unit Testing
 
-Status: TBD
+Status: TBD; TypeScript/React test runner required before app scaffold
 
 Decision owner: founder
 
@@ -942,7 +984,7 @@ Decision depth: normal
 
 Decision required before: domain models
 
-Questions to resolve: test runner, assertion style, mocks, coverage expectations.
+Questions to resolve: test runner, assertion style, React component testing, route loader/action testing, mocks, coverage expectations.
 
 ### Integration Testing
 
@@ -954,7 +996,7 @@ Decision depth: normal
 
 Decision required before: connectors
 
-Questions to resolve: mocked integrations, contract tests, sandbox providers, live test policy.
+Questions to resolve: mocked integrations, contract tests, React Router route/action integration tests, sandbox providers, live test policy.
 
 ### End-To-End Testing
 
@@ -966,11 +1008,11 @@ Decision depth: normal
 
 Decision required before: MVP release
 
-Questions to resolve: browser testing, auth setup, seeded data, CI runtime.
+Questions to resolve: browser testing, auth setup, seeded data, React Router app startup, CI runtime.
 
 ### Schema Validation
 
-Status: TBD
+Status: TBD; TypeScript type generation compatibility required for web app/control-plane UI
 
 Decision owner: founder
 
@@ -978,7 +1020,7 @@ Decision depth: normal
 
 Decision required before: machine-readable specs
 
-Questions to resolve: schema language, runtime validation, generated types, backwards compatibility.
+Questions to resolve: schema language, runtime validation, generated TypeScript types, shared server/client validation, backwards compatibility.
 
 ### Security Scanning
 
@@ -1012,7 +1054,7 @@ Current placeholder: `docs/10-code-review-methodology.md`.
 
 ### Dependency Management
 
-Status: Blessed for Renovate; application dependency policy TBD
+Status: Blessed for Renovate; JavaScript/TypeScript application dependency policy TBD
 
 Decision owner: founder
 
@@ -1024,7 +1066,7 @@ Decision: Use Renovate for automated dependency maintenance.
 
 Current repository config: `renovate.json` uses `config:recommended`, disables the dependency dashboard because GitHub Issues are disabled, and sets a three-day minimum release age with strict internal checks.
 
-Questions still to resolve: application dependency version ranges, language-specific lockfile policy, vulnerability triage, Renovate scheduling, automerge policy, and whether Renovate must run through a hosted app or a Buildkite/self-hosted job.
+Questions still to resolve: package manager, JavaScript/TypeScript lockfile policy, application dependency version ranges, runtime minimum release age policy, vulnerability triage, Renovate scheduling, automerge policy, and whether Renovate must run through a hosted app or a Buildkite/self-hosted job.
 
 ## Product And Business Systems
 
@@ -1177,3 +1219,23 @@ The dedicated stack conversation should produce:
 - allowed-later paths
 - ADRs for major choices
 - a revised app scaffold build plan
+
+## Next Decisions To Record
+
+The React Router and TypeScript web UI decision creates these follow-on decisions before app scaffold:
+
+- package manager and workspace manager
+- Node.js version and runtime parity policy
+- Go version and CLI layout
+- React Router mode, rendering model, route conventions, and deployment target
+- TypeScript strictness, generated types, and CI typecheck command
+- TypeScript and React linting stack
+- TypeScript and TSX formatter integration under dprint
+- unit, component, integration, end-to-end, and accessibility testing stack
+- schema validation library and shared validation policy
+- UI component and accessibility strategy
+- styling and design system
+- client state and data-fetching boundary: React Router only or an additional server-state library
+- forms strategy and validation integration
+- realtime transport for live agent-run UI
+- backend framework and API style

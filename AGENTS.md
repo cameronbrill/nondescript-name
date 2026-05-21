@@ -47,6 +47,8 @@ The product must not achieve autonomy by hiding risk. It must achieve autonomy t
 20. Use cargo-binstall to accelerate cargo-installed seed CLIs; this does not bless Rust as the application language.
 21. Use Aviator CLI for stacked PRs, Aviator MergeQueue for merge queue, and Aviator Releases for release management.
 22. Use communique for release notes unless a later decision supersedes it.
+23. Use React Router and TypeScript for the web app/control-plane UI when app code begins.
+24. Use Go for company CLIs when CLI code begins.
 
 ## Dogfood Context
 
@@ -66,6 +68,7 @@ ai-company is also a dogfood company, but it requires tighter founder oversight 
 - When changing doctrine, update related docs so the repo remains internally consistent.
 - When a decision is made, record it in the decision system and create an ADR if it affects architecture.
 - Treat `docs/08-stack-decision-backlog.md` as the source of truth for unresolved stack decisions.
+- Treat `docs/adr/003-react-router-typescript-web-ui.md` as the source of truth for the blessed web UI and company CLI language decision.
 - Never commit real secrets, credentials, tokens, customer data, private keys, production incident data, or private/internal datasets.
 - Do not add GitHub Actions workflows or GitHub Issue templates.
 - Do not add dotenv example files. Document fnox secret names or config instead.

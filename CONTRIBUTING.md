@@ -10,6 +10,8 @@ Before contributing code, read:
 - `docs/07-decision-system.md`
 - `docs/08-stack-decision-backlog.md`
 - `docs/adr/001-seed-tooling-baseline.md`
+- `docs/adr/002-vendor-integration-abstraction.md`
+- `docs/adr/003-react-router-typescript-web-ui.md`
 
 ## Current Contribution Priority
 

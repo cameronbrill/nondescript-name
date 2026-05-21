@@ -41,7 +41,7 @@ The MVP should include these capabilities at a product level:
 - audit trail
 - founder review loop
 
-These are product requirements, not current implementation details. The exact stack, schemas, services, and UI are still undecided.
+These are product requirements, not current implementation details. React Router and TypeScript are blessed for the web app/control-plane UI, but the exact schemas, services, and remaining UI details are still undecided.
 
 ## Production Launch/Write Requirement
 

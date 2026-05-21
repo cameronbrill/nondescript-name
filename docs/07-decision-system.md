@@ -96,6 +96,26 @@ Rejected for now:
 - committed `.env` files.
 - committed `.env.example` files.
 
+## Blessed Application Stack Decisions
+
+`docs/adr/003-react-router-typescript-web-ui.md` blesses initial application stack choices for future implementation.
+
+Blessed for application development when app code begins:
+
+- React Router for the web app and control-plane UI.
+- TypeScript for the web app and control-plane UI.
+- Go for company CLIs.
+
+Rejected for now:
+
+- Datastar for the web UI framework.
+
+Deferred:
+
+- Rust as an application language.
+
+These choices do not bless the backend framework, database, hosting provider, auth provider, policy engine, capability runtime, queue, durable workflow runner, styling system, component library, form library, validation system, realtime transport, test runner, or deployment model.
+
 ## How To Make A Decision
 
 1. Name the decision clearly.
